@@ -2,6 +2,7 @@ const pianoKeys = document.querySelectorAll(".piano-keys .key");
 const volumeSlider = document.querySelector(".volume-slider input");
 let mapedkeys = []; // biblioteca das teclas mapeadas
 let audio = new Audio(`/src/tunes/a.wav`);
+const keysCheck = document.querySelector(".keys-check input");
 
 const playTune = (key) => {
     audio.src = `/src/tunes/${key}.wav`;  // Usando a variável para mudar a fonte do áudio
@@ -10,8 +11,8 @@ const playTune = (key) => {
     const clickedKey = document.querySelector(`[data-key="${key}"]`);
     clickedKey.classList.add("active"); // Adiciona a classe active
     setTimeout(() => {
-        clickedKey.classList.remove("active"); // Remove a classe active após 150ms
-    }, 150);
+        clickedKey.classList.remove("active"); // Remove a classe active
+    }, 150); //150ms
 };
 
 // Adicionando o evento de clique para cada tecla
@@ -28,8 +29,14 @@ document.addEventListener("keydown", (e) => { // colocando para fazer som ao ape
 });
 
 const handleVolume = (e) => {
-    audio.volume = e.target.value; // Atualiza o volume do áudio
+    audio.volume = e.target.value; // funçao para o volume do áudio
     
 };
 
+const showHideKeys = () => {
+    pianoKeys.forEach((key) => key.classList.toggle("hide"));
+};
+
 volumeSlider.addEventListener("input", handleVolume); // Chamando a função
+
+keysCheck.addEventListener("click", showHideKeys);
