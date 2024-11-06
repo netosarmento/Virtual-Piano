@@ -1,11 +1,11 @@
 const pianoKeys = document.querySelectorAll(".piano-keys .key");
 const volumeSlider = document.querySelector(".volume-slider input");
 let mapedkeys = []; // biblioteca das teclas mapeadas
-let audio = new Audio(`/src/tunes/a.wav`);
+let audio = new Audio(`./src/tunes/a.wav`);
 const keysCheck = document.querySelector(".keys-check input");
 
 const playTune = (key) => {
-    audio.src = `/src/tunes/${key}.wav`;  // Usando a variável para mudar a fonte do áudio
+    audio.src = `./src/tunes/${key}.wav`;  // Usando a variável para mudar a fonte do áudio
     audio.play();
 
     const clickedKey = document.querySelector(`[data-key="${key}"]`);
